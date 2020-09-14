@@ -10,9 +10,28 @@ $(document).ready(function () {
 		this.contacts.push(contact);
 	}
 
+	AddressBook.prototype.deleteContact = function(id) {
+		for (let i = 0; i < this.contacts.length; i++) {
+			if (this.contacts[i] && this.contacts[i].id == id) {
+				delete this.contacts[i];
+				return true;
+			}
+		}
+		return false;
+	}
+
 	AddressBook.prototype.assignId = function() {
 		this.currentId += 1;
 		return this.currentId;
+	}
+
+	AddressBook.prototype.findContact = function(id) {
+		for (let i = 0; i < this.contacts.length; i++) {
+			if (this.contacts[i] && this.contacts[i].id == id) { 
+				return this.contacts[i];
+			}
+		}
+		return false;
 	}
 
 	function Contact(firstName, lastName, phoneNumber) {
