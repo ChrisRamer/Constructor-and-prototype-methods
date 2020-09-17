@@ -40,7 +40,16 @@ button[type="submit"] {
 	background-color: rgb(71, 255, 102);
 	color: rgb(0, 0, 0);
 	border: 2px solid rgb(3, 145, 27);
-	border-radius: 25px;
+	border-radius: 10px;
+	font-weight: bold;
+}
+
+.redButton {
+	background-color: rgb(187, 46, 46);
+	color: rgb(0, 0, 0);
+	border: 2px solid rgb(133, 43, 43);
+	border-radius: 10px;
+	font-weight: bold;
 }
 
 /* End of base css */
