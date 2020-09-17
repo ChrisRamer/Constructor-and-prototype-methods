@@ -47,6 +47,15 @@ Contact.prototype.fullName = function () {
 // User interface logic
 let addressBook = new AddressBook();
 
+function displayContactDetails(addressbookToDisplay) {
+	let contactsList = $("#contacts");
+	let htmlForContactInfo = "";
+	addressbookToDisplay.contacts.forEach(function(contact) {
+		htmlForContactInfo += "<p id=" + contact.id + ">" + contact.firstName + " " + contact.lastName + ": " + contact.phoneNumber + "</p>";
+	});
+	contactsList.html(htmlForContactInfo);
+}
+
 $(document).ready(function () {
 
 	$("form#new-contact").submit(function (e) { 
@@ -56,7 +65,7 @@ $(document).ready(function () {
 		const phoneNumberInput = $("input#new-phone-number").val();
 		let newContact = new Contact(firstNameInput, lastNameInput, phoneNumberInput);
 		addressBook.addContact(newContact);
-		console.log(addressBook.contacts);
+		displayContactDetails(addressBook);
 	});
 
 });
