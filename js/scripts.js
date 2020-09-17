@@ -56,8 +56,37 @@ function displayContactDetails(addressbookToDisplay) {
 	contactsList.html(htmlForContactInfo);
 }
 
+function showContact(contactId) {
+	const contact = addressBook.findContact(contactId);
+	$("#show-contact").show();
+	$(".first-name").html(contact.firstName);
+	$(".last-name").html(contact.lastName);
+	$(".phone-number").html(contact.phoneNumber);
+
+	$("input#new-first-name").val("");
+	$("input#new-last-name").val("");
+	$("input#new-phone-number").val("");
+
+	let buttons = $("#buttons");
+	buttons.empty();
+	buttons.append("<button class='redButton' id=" + contact.id + ">Delete contact</button>");
+}
+
+function attachContactListeners() {
+	$("#contacts").on("click", "p", function () {
+		showContact(this.id);
+	});
+
+	$("#buttons").on("click", ".deleteButton", function () {
+		addressBook.deleteContact(this.id);
+		$("#show-contact").hide();
+		displayContactDetails(addressBook);
+	});
+}
+
 $(document).ready(function () {
 
+	attachContactListeners();
 	$("form#new-contact").submit(function (e) { 
 		e.preventDefault();
 		const firstNameInput = $("input#new-first-name").val();
