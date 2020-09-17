@@ -38,3 +38,7 @@ button[type="submit"] {
 }
 
 /* End of base css */
+
+#show-contact {
+	display: none;
+}
