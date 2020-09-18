@@ -34,10 +34,12 @@ AddressBook.prototype.findContact = function (id) {
 	return false;
 }
 
-function Contact(firstName, lastName, phoneNumber) {
+function Contact(firstName, lastName, phoneNumber, emailAddress, homeAddress) {
 	this.firstName = firstName;
 	this.lastName = lastName;
 	this.phoneNumber = phoneNumber;
+	this.emailAddress  = emailAddress;
+	this.homeAddress = homeAddress;
 }
 
 Contact.prototype.fullName = function () {
@@ -62,10 +64,14 @@ function showContact(contactId) {
 	$(".first-name").html(contact.firstName);
 	$(".last-name").html(contact.lastName);
 	$(".phone-number").html(contact.phoneNumber);
+	$(".email-address").html(contact.emailAddress);
+	$(".home-address").html(contact.homeAddress);
 
 	$("input#new-first-name").val("");
 	$("input#new-last-name").val("");
 	$("input#new-phone-number").val("");
+	$("input#new-email-address").val("");
+	$("input#new-home-address").val("");
 
 	let buttons = $("#buttons");
 	buttons.empty();
@@ -92,7 +98,9 @@ $(document).ready(function () {
 		const firstNameInput = $("input#new-first-name").val();
 		const lastNameInput = $("input#new-last-name").val();
 		const phoneNumberInput = $("input#new-phone-number").val();
-		let newContact = new Contact(firstNameInput, lastNameInput, phoneNumberInput);
+		const emailAddressInput = $("input#new-email-address").val();
+		const homeAddressInput = $("input#new-home-address").val();
+		let newContact = new Contact(firstNameInput, lastNameInput, phoneNumberInput, emailAddressInput, homeAddressInput);
 		addressBook.addContact(newContact);
 		displayContactDetails(addressBook);
 	});
