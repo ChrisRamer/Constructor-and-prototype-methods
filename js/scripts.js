@@ -51,7 +51,7 @@ function displayContactDetails(addressbookToDisplay) {
 	let contactsList = $("#contacts");
 	let htmlForContactInfo = "";
 	addressbookToDisplay.contacts.forEach(function(contact) {
-		htmlForContactInfo += "<p id=" + contact.id + ">" + contact.firstName + " " + contact.lastName + ": " + contact.phoneNumber + "</p>";
+		htmlForContactInfo += "<p id=" + contact.id + ">" + contact.firstName + " " + contact.lastName + "</p>";
 	});
 	contactsList.html(htmlForContactInfo);
 }
